@@ -37,8 +37,6 @@ uint8_t blocks[5][4][4] = {
                            {{0, 0, 0, 0}, {0, 1, 1, 1}, {0, 1, 0, 0}, {0, 0, 0, 0}},        // L
                            {{0, 0, 0, 0}, {1, 1, 1, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}},        // I
                            {{0, 0, 0, 0}, {0, 1, 1, 0}, {0, 0, 1, 1}, {0, 0, 0, 0}},        // S
-
-
 };
 
 
@@ -193,11 +191,13 @@ void plotBlock(tBlock *pBlock, bool negative) {
     uint8_t i, j;
     for (i =  0; i < 4; i++) {
         for (j = 0; j < 4; j++) {
-            moveCursor(column + 2 + j, row + 1 + i);
+
             if (pBlock->components[i][j] == 1) {
                 if (negative) {
+                    moveCursor(column + 2 + j, row + 1 + i);
                     serialPrint(" ");
                 } else {
+                    moveCursor(column + 2 + j, row + 1 + i);
                     serialPrint("O");
                 }
             }
